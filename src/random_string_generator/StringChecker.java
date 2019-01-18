@@ -1,5 +1,9 @@
 package random_string_generator;
 
+interface CheckerMethod {
+	boolean check(String word);
+}
+
 public class StringChecker {
 
 	public static boolean isBetweenInclusive(int value, int low, int top){
