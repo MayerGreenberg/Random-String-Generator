@@ -51,16 +51,19 @@ public class RandomStringGenerator {
 		StringBuilder value = new StringBuilder(size);
 		for(int i = 0; i < size; i++){
 			int choice = random.nextInt(32);
-			if(StringChecker.isBetweenInclusive(choice, 0, 14))
+			if(isBetweenInclusive(choice, 0, 14))
 				value.append(anyRandomString(1, 33, 47));
-			else if(StringChecker.isBetweenInclusive(choice, 15, 21))
+			else if(isBetweenInclusive(choice, 15, 21))
 				value.append(anyRandomString(1, 58, 64));
-			else if(StringChecker.isBetweenInclusive(choice, 22, 27))
+			else if(isBetweenInclusive(choice, 22, 27))
 				value.append(anyRandomString(1, 91, 96));
-			else if(StringChecker.isBetweenInclusive(choice, 28, 31))
+			else if(isBetweenInclusive(choice, 28, 31))
 				value.append(anyRandomString(1, 123, 126));
 		}
 		return value.toString();
 	}
 
+	public static boolean isBetweenInclusive(int value, int low, int top){
+		return value >= low && value <= top;
+	}
 }
