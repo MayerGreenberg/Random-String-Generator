@@ -25,7 +25,7 @@ public class RandomStringTests {
 			assertFalse(StringChecker.isLowerCaseWord(word));
 		
 	}
-	@Test
+	/*@Test
 	public void isLowerCaseWorks(){
 		char[] lower = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 		char[] upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ`1234567890-=[]\\,./;\'~!@#$%^&*()_+{}|:<>?\"".toCharArray();
@@ -33,7 +33,7 @@ public class RandomStringTests {
 			assertTrue(StringChecker.isLowerCase(c));
 		for (char c : upper)
 			assertFalse(StringChecker.isLowerCase(c));
-	}
+	}*/
 	@Test
 	public void isUpperCaseWordWorks(){
 		String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -42,7 +42,7 @@ public class RandomStringTests {
 		for (String word : lower)
 			assertFalse(StringChecker.isUpperCaseWord(word));
 	}
-	@Test
+	/*@Test
 	public void isUpperCaseWorks(){
 		char[] upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 		char[] lower = "abcdefghijklmnopqrstuvwxyz`1234567890-=[]\\,./;\'~!@#$%^&*()_+{}|:<>?\"".toCharArray();
@@ -50,20 +50,20 @@ public class RandomStringTests {
 			assertTrue(StringChecker.isUpperCase(c));
 		for (char c : lower)
 			assertFalse(StringChecker.isUpperCase(c));
-	}
+	}*/
 	@Test
 	public void isIntegerWordWorks(){
 		assertTrue(StringChecker.isIntegerWord("8932749823709321703723"));
 		assertFalse(StringChecker.isIntegerWord("8932749823f709321703723"));
 	}
-	@Test
+	/*@Test
 	public void isIntegerWorks(){
 		for(char c : "092347209347523094675320658132520435043975432097432074".toCharArray())
 			assertTrue(StringChecker.isInteger(c));
 		for(char c : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`-=[]\\,./;\'~!@#$%^&*()_+{}|:<>?\"".toCharArray())
 			assertFalse(StringChecker.isInteger(c));
 		
-	}
+	}*/
 	@Test
 	public void integerDoesNotGoOutOfBounds(){
 		String testedString = RandomStringGenerator.integer(10000000);
