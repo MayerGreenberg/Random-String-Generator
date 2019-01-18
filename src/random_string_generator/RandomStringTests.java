@@ -7,14 +7,18 @@ import org.junit.Test;
 public class RandomStringTests {
 
 	@Test
-	public void testLowerTestDoesNotGoOutOfBounds(){
+	public void testLowerCaseDoesNotGoOutOfBounds(){
 		String testedString = RandomStringGenerator.lowerCase(10000000);
 		assertTrue(StringChecker.isLowerCaseWord(testedString));
+		for (int i = 0; i < testedString.length(); i++)
+			assertTrue(Character.isLowerCase(testedString.charAt(i)));
 	}
 	@Test
 	public void testUpperCaseDoesNotGoOutOfBounds(){
 		String testedString = RandomStringGenerator.upperCase(10000000);
 		assertTrue(StringChecker.isUpperCaseWord(testedString));
+		for (int i = 0; i < testedString.length(); i++)
+			assertTrue(Character.isUpperCase(testedString.charAt(i)));
 	}
 	@Test
 	public void isLowerCaseWordWorks(){
@@ -68,5 +72,11 @@ public class RandomStringTests {
 	public void integerDoesNotGoOutOfBounds(){
 		String testedString = RandomStringGenerator.integer(10000000);
 		assertTrue(StringChecker.isIntegerWord(testedString));
+		for (int i = 0; i < testedString.length(); i++)
+			assertTrue(Character.isDigit(testedString.charAt(i)));
+	}
+	@Test
+	public void allLettersDoesNotGoOutOfBounds() {
+		String testedString = RandomStringGenerator.allLetters(10000000)
 	}
 }
