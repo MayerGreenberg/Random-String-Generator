@@ -31,8 +31,21 @@ public class RandomStringGenerator {
 	private static String anyRandomString(int size, int lowBound, int topBound){
 		char[] values = new char[size];
 		for (int i = 0; i < values.length; i++)
-			values[i] = (char) (random.nextInt(topBound - lowBound + 1) + lowBound);
+			values[i] = anyRandomChar(size, lowBound, topBound);
 		return new String(values);
+	}
+	/**
+	 * This method generates the random characters for anyRandomString()with the
+	 * ascii-character-value limits passed in.
+	 * @param size the size of the word
+	 * @param lowBound the lowest possible ascii value
+	 *  for the requested character
+	 * @param topBound the highest possible ascii
+	 *  value for the requested character
+	 * @return the requested random character
+	 */
+	private static char anyRandomChar(int size, int lowBound, int topBound) {
+		return (char) (random.nextInt(topBound - lowBound + 1) + lowBound);
 	}
 	/**
 	 * This method returns a random lowercase String
