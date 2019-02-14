@@ -40,27 +40,34 @@ public class RandomStringTests {
 	}
 	public boolean StringCheckerCatchesUpperCase(Checker checker, String word) {
 		//return checker.check(word);
-	}
-	public boolean StringCheckerCatchesWhiteSpace(Checker checker, String word) {
-		//return checker.check(word);
 	}*/
 	/**
-	 * This method holds the test cases for testing a StringChecker class method against special chars
-	 * @param checker
-	 * @return
+	 * This method holds the test cases for testing a StringChecker class method against white space.
+	 * @param checker the method to test againt white space
+	 * @return if the method returned true for <strong>any</strong> test
+	 */
+	public boolean StringCheckerCatchesWhiteSpace(Checker checker) {
+		return checker.check("wgiuh vrevwhe") || checker.check(" ") || checker.check("8932749823 709321703723")
+				|| checker.check("qwertyu iopasdfghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM") || checker.check("lai	dsfuh")
+				|| checker.check("(%%&^(*& ()&(^(%$%$");
+	}
+	/**
+	 * This method holds the test cases for testing a StringChecker class method against special chars.
+	 * @param checker the method to test againt special chars
+	 * @return if the method returned true for <strong>any</strong> test
 	 */
 	public boolean StringCheckerCatchesSpecialChars(Checker checker) {
 		for (String word : "`-=[]\\\\,./;\\'~!@#$%^&*()_+{}|:<>?\\\"".split(""))
-			if (!checker.check(word))
-				return false;
-		return checker.check("8932749823!709321703723") && checker.check("8932749823#709321703723")
-				&& checker.check("89327493217823'70903723") && checker.check("8932749823.709321703723")
-				&& checker.check("89327*70932498231703723") && checker.check("89327497093217823%03723");
+			if (checker.check(word))
+				return true;
+		return checker.check("8932749823!709321703723") || checker.check("8932749823#709321703723")
+				|| checker.check("89327493217823'70903723") || checker.check("8932749823.709321703723")
+				|| checker.check("89327*70932498231703723") || checker.check("89327497093217823%03723")
+				|| checker.check("qwertyuiopasdfg(hjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM");
 	}
 
 	@Test
 	public void isLowerCaseWordWorksOnLowerCase(){
-		//System.out.println(checkStringWithMethod(StringChecker::isLowerCaseWord, "khfufukguKykgk"));
 		assertTrue(StringChecker.isLowerCaseWord("abcdefghijklmnopqrstuvwxyz"));		
 	}
 	@Test
@@ -70,7 +77,8 @@ public class RandomStringTests {
 	}
 	@Test
 	public void isLowerCaseWordCatchesWhiteSpace() {
-		assertFalse(StringChecker.isLowerCaseWord("wgiuh vrevwhe"));
+		//assertFalse(StringChecker.isLowerCaseWord("wgiuh vrevwhe"));
+		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isLowerCaseWord));
 	}
 	@Test
 	public void isLowerCaseWordCatchesSpecialChars() {
@@ -90,10 +98,11 @@ public class RandomStringTests {
 	}
 	@Test
 	public void isUpperCaseWordCatchesWhiteSpace() {
-		assertFalse(StringChecker.isUpperCaseWord(" "));
+		//assertFalse(StringChecker.isUpperCaseWord(" "));
+		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isUpperCaseWord));
 	}
 	@Test
-	public void isUpperCaseWordCatchesNumber() {
+	public void isUpperCaseWordCatchesNumbers() {
 		for (String word : "1234567890".split(""))
 			assertFalse(StringChecker.isUpperCaseWord(word));
 	}
@@ -116,7 +125,8 @@ public class RandomStringTests {
 	}		
 	@Test
 	public void isIntegerWordCatchesWhiteSpace(){
-		assertFalse(StringChecker.isIntegerWord("8932749823 709321703723"));
+		//assertFalse(StringChecker.isIntegerWord("8932749823 709321703723"));
+		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isIntegerWord));
 	}
 	@Test
 	public void isIntegerWordCatchesSpecialChars(){
@@ -145,7 +155,8 @@ public class RandomStringTests {
 	}
 	@Test
 	public void isAllLettersCatchesWhiteSpace() {
-		assertFalse(StringChecker.isLetterWord("qwertyu iopasdfghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM"));
+		//assertFalse(StringChecker.isLetterWord("qwertyu iopasdfghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM"));
+		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isLetterWord));
 	}
 	@Test
 	public void isAllLettersCatchesNumbers() {
