@@ -28,14 +28,14 @@ public class RandomStringGenerator {
 	 *  value for a character in the requested word
 	 * @return the requested random String
 	 */
-	private static String anyRandomString(int size, int lowBound, int topBound){
+	public static String anyRandomString(int size, int lowBound, int topBound){
 		char[] values = new char[size];
 		for (int i = 0; i < values.length; i++)
 			values[i] = anyRandomChar(size, lowBound, topBound);
 		return new String(values);
 	}
 	/**
-	 * This method generates the random characters for anyRandomString()with the
+	 * This method generates the random characters for anyRandomString() with the
 	 * ascii-character-value limits passed in.
 	 * @param size the size of the word
 	 * @param lowBound the lowest possible ascii value
@@ -44,7 +44,7 @@ public class RandomStringGenerator {
 	 *  value for the requested character
 	 * @return the requested random character
 	 */
-	private static char anyRandomChar(int size, int lowBound, int topBound) {
+	public static char anyRandomChar(int size, int lowBound, int topBound) {
 		return (char) (random.nextInt(topBound - lowBound + 1) + lowBound);
 	}
 	/**
@@ -93,7 +93,14 @@ public class RandomStringGenerator {
 	public static String alphaNumeric(int size){
 		StringBuilder value = new StringBuilder(size);
 		for (int i = 0; i < size; i++) {
-			switch (random.nextInt(3)) {
+			int choice = random.nextInt(62);
+			if(isBetweenInclusive(choice, 0, 25))
+				value.append(lowerCase(1));
+			else if(isBetweenInclusive(choice, 26, 51))
+				value.append(upperCase(1));
+			else if(isBetweenInclusive(choice, 52, 61))
+				value.append(integer(1));
+			/*switch (random.nextInt(3)) {
 			case 0:
 				value.append(integer(1));
 				break;
@@ -103,7 +110,7 @@ public class RandomStringGenerator {
 			case 2:
 				value.append(upperCase(1));
 				break;
-			}
+			}*/
 		}
 		return value.toString();
 	}

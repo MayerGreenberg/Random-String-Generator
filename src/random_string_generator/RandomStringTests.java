@@ -35,8 +35,22 @@ public class RandomStringTests {
 			assertTrue(Character.isLetter(testedString.charAt(i)));
 	}
 	
+	public boolean StringCheckerWorksOnLowerCase(Checker checker, String word) {
+		//return checker.check(word);
+	}
+	public boolean StringCheckerWorksOnLowerCase(Checker checker, String word) {
+		//return checker.check(word);
+	}
+	public boolean StringCheckerWorksOnLowerCase(Checker checker, String word) {
+		//return checker.check(word);
+	}
+	public boolean StringCheckerWorksOnLowerCase(Checker checker, String word) {
+		//return checker.check(word);
+	}
+	
 	@Test
 	public void isLowerCaseWordWorksOnLowerCase(){
+		System.out.println(checkStringWithMethod(StringChecker::isLowerCaseWord, "khfufukguKykgk"));
 		assertTrue(StringChecker.isLowerCaseWord("abcdefghijklmnopqrstuvwxyz"));		
 	}
 	@Test
@@ -126,4 +140,7 @@ public class RandomStringTests {
 		assertFalse(StringChecker.isLetterWord("qwertyuiopasdf6ghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM"));
 	}
 
+}
+interface Checker{
+	boolean check(String word);
 }
