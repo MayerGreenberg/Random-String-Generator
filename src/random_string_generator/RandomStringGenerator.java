@@ -100,17 +100,6 @@ public class RandomStringGenerator {
 				value.append(upperCase(1));
 			else if(isBetweenInclusive(choice, 52, 61))
 				value.append(integer(1));
-			/*switch (random.nextInt(3)) {
-			case 0:
-				value.append(integer(1));
-				break;
-			case 1:
-				value.append(lowerCase(1));
-				break;
-			case 2:
-				value.append(upperCase(1));
-				break;
-			}*/
 		}
 		return value.toString();
 	}
