@@ -7,20 +7,20 @@ import org.junit.Test;
 public class RandomStringTests {
 
 	@Test
-	public void testLowerCaseGeneratorDoesNotGoOutOfBounds(){
+	public void lowerCaseGeneratorDoesNotGoOutOfBounds(){
 		String testedString = RandomStringGenerator.lowerCase(100000);
 		assertTrue(StringChecker.isLowerCaseWord(testedString));
 		for (int i = 0; i < testedString.length(); i++)
 			assertTrue(Character.isLowerCase(testedString.charAt(i)));
-		assertTrue(testedString.matches("[a-z]*"));
+		assertTrue(testedString.matches("[a-z]+"));
 	}
 	@Test
-	public void testUpperCaseGeneratorDoesNotGoOutOfBounds(){
+	public void upperCaseGeneratorDoesNotGoOutOfBounds(){
 		String testedString = RandomStringGenerator.upperCase(100000);
 		assertTrue(StringChecker.isUpperCaseWord(testedString));
 		for (int i = 0; i < testedString.length(); i++)
 			assertTrue(Character.isUpperCase(testedString.charAt(i)));
-		assertTrue(testedString.matches("[A-Z]*"));
+		assertTrue(testedString.matches("[A-Z]+"));
 	}
 	@Test
 	public void integerGeneratorDoesNotGoOutOfBounds(){
@@ -28,7 +28,7 @@ public class RandomStringTests {
 		assertTrue(StringChecker.isIntegerWord(testedString));
 		for (int i = 0; i < testedString.length(); i++)
 			assertTrue(Character.isDigit(testedString.charAt(i)));
-		assertTrue(testedString.matches("[0-9]*"));
+		assertTrue(testedString.matches("[0-9]+"));
 	}
 	@Test
 	public void allLettersGeneratorDoesNotGoOutOfBounds() {
@@ -36,6 +36,6 @@ public class RandomStringTests {
 		assertTrue(StringChecker.isLetterWord(testedString));
 		for (int i = 0; i < testedString.length(); i++)
 			assertTrue(Character.isLetter(testedString.charAt(i)));
-		assertTrue(testedString.matches("[a-zA-Z]*"));
+		assertTrue(testedString.matches("[a-zA-Z]+"));
 	}
 }
