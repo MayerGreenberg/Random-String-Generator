@@ -112,6 +112,10 @@ public class StringCheckerTests {
 	
 	
 	
+	
+	
+	
+	
 	@Test
 	public void isLowerCaseWordWorksOnLowerCase() {
 		assertTrue(StringChecker.isLowerCaseWord("abcdefghijklmnopqrstuvwxyz"));
@@ -140,6 +144,10 @@ public class StringCheckerTests {
 		assertFalse(StringCheckerCatchesNumbers(StringChecker::isLowerCaseWord));
 	}
 
+	
+	
+	
+	
 	
 	
 	
@@ -175,6 +183,10 @@ public class StringCheckerTests {
 	
 	
 
+	
+	
+	
+	
 	@Test
 	public void isIntegerWordWorksOnInteger() {
 		assertTrue(StringChecker.isIntegerWord("8932749823709321703723"));
@@ -199,6 +211,10 @@ public class StringCheckerTests {
 		assertFalse(StringCheckerCatchesSpecialChars(StringChecker::isIntegerWord));
 	}
 
+	
+	
+	
+	
 	
 	
 	
@@ -227,6 +243,11 @@ public class StringCheckerTests {
 	
 	
 	
+	
+	
+	
+	
+	
 	@Test
 	public void isAlphaNumericWorksOnNumbersAndAllLetters() {
 		assertTrue(StringChecker.isAlphaNumericWord("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"));		
@@ -242,6 +263,11 @@ public class StringCheckerTests {
 	
 	
 	
+	
+	
+	
+	
+	
 	@Test
 	public void isAlphaNumericOrSpecialCharWorksOnNumbersAndAllLettersAndSpecialChars() {
 		assertTrue(StringChecker.isAlphaNumericOrSpecialCharWord(
@@ -251,6 +277,12 @@ public class StringCheckerTests {
 	public void isAlphaNumericOrSpecialCharCatchesWhiteSpace() {
 		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isAlphaNumericOrSpecialCharWord));
 	}
+	
+	
+	
+	
+	
+	
 	
 	
 	
