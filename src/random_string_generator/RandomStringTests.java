@@ -38,4 +38,24 @@ public class RandomStringTests {
 			assertTrue(Character.isLetter(testedString.charAt(i)));
 		assertTrue(testedString.matches("[a-zA-Z]+"));
 	}
+	@Test
+	public void alphaNumericGeneratorDoesNotGoOutOfBounds() {
+		String testedString = RandomStringGenerator.alphaNumeric(100000);
+		assertTrue(StringChecker.isAlphaNumericWord(testedString));
+		for (int i = 0; i < testedString.length(); i++)
+			assertTrue(Character.isLetterOrDigit(testedString.charAt(i)));
+		assertTrue(testedString.matches("[a-zA-Z0-9]+"));
+	}
+	@Test
+	public void alphaNumericAndSpecialCharGeneratorDoesNotGoOutOfBounds() {
+		String testedString = RandomStringGenerator.alphaNumericAndSpecialChars(100000);
+		assertTrue(StringChecker.isAlphaNumericOrSpecialCharWord(testedString));
+		assertTrue(testedString.matches("[!-~]+"));
+	}
+	@Test
+	public void specialCharGeneratorDoesNotGoOutOfBounds() {
+		String testedString = RandomStringGenerator.specialChars(100000);
+		assertTrue(StringChecker.isSpecialCharWord(testedString));
+		assertTrue(testedString.matches("[!-\\/:-@\\[-`\\{-~]+"));
+	}
 }

@@ -134,6 +134,11 @@ public class StringCheckerTests {
 	public void isLowerCaseWordCatchesSpecialChars() {
 		assertFalse(StringCheckerCatchesSpecialChars(StringChecker::isLowerCaseWord));
 	}
+	
+	@Test
+	public void isLowerCaeWordCatchesNumbers() {
+		assertFalse(StringCheckerCatchesNumbers(StringChecker::isLowerCaseWord));
+	}
 	//add catches numbers
 
 	
@@ -220,6 +225,55 @@ public class StringCheckerTests {
 			assertFalse(StringChecker.isLetterWord(word));
 		assertFalse(StringChecker.isLetterWord("qwertyuiopasdf6ghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM"));*/
 	}
+	
+	
+	
+	@Test
+	public void isAlphaNumericWorksOnNumbersAndAllLetters() {
+		assertTrue(StringChecker.isAlphaNumericWord("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"));		
+	}
+	@Test
+	public void isAlphaNumericCatchesSpecialChars() {
+		assertFalse(StringCheckerCatchesSpecialChars(StringChecker::isAlphaNumericWord));
+	}
+	@Test
+	public void isAlphaNumericCatchesWhiteSpace() {
+		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isAlphaNumericWord));
+	}
+	
+	
+	
+	@Test
+	public void isAlphaNumericOrSpecialCharWorksOnNumbersAndAllLettersAndSpecialChars() {
+		assertTrue(StringChecker.isAlphaNumericOrSpecialCharWord(
+				"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789`~!@#$%^&*()-_=+\\|]}[{];:,<.>/?\'\""));
+	}
+	@Test
+	public void isAlphaNumericOrSpecialCharCatchesWhiteSpace() {
+		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isAlphaNumericOrSpecialCharWord));
+	}
+	
+	
+	
+	
+	@Test
+	public void isSpecialCharWorksOnSpecialChars() {
+		assertTrue(StringChecker.isSpecialCharWord("`~!@#$%^&*()_-+=<,>.?/:;\"\'{[}]|\\"));
+	}
+	@Test
+	public void isSpecialCharCatchesAllLetters() {
+		assertFalse(StringCheckerCatchesAllLetters(StringChecker::isSpecialCharWord));
+	}
+	@Test
+	public void isSpecialCharCatchesWhiteSpace() {
+		assertFalse(StringCheckerCatchesWhiteSpace(StringChecker::isSpecialCharWord));
+	}
+
+	@Test
+	public void isSpecialCharCatchesNumbers() {
+		assertFalse(StringCheckerCatchesNumbers(StringChecker::isSpecialCharWord));
+	}
+	
 	
 	
 	
