@@ -139,7 +139,6 @@ public class StringCheckerTests {
 	public void isLowerCaeWordCatchesNumbers() {
 		assertFalse(StringCheckerCatchesNumbers(StringChecker::isLowerCaseWord));
 	}
-	//add catches numbers
 
 	
 	
