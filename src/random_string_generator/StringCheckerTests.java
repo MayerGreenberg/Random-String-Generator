@@ -8,23 +8,80 @@ import org.junit.Test;
 public class StringCheckerTests {
 
 	
-//	public boolean StringCheckerWorksOnLowerCase(Checker checker, String word) {
-//		// return checker.check(word);
-//	}
-//
-//	public boolean StringCheckerCatchesUpperCase(Checker checker, String word) { // return
-//		checker.check(word);
-//	}
-//
-//	public boolean StringCheckerCatchesNumbers(IStringChecker checker) {
-//		
-//	}
 	/**
 	 * This method holds the test cases for testing a StringChecker class method
-	 * against white space.
+	 * against lowercase letters.Returning true means that the method considers the 
+	 * tested string as passing the test as one of its own, so all the tests should
+	 * return false if the method tests strings correctly.
 	 * 
-	 * @param checker the method to test againt white space
-	 * @return if the method returned true for <strong>any</strong> test
+	 * @param checker the method to test against lowercase letters
+	 * @return True if the method doesn't work and counts the test cases as passing its test.
+	 * False if the method does work and doesn't counts the test cases as passing its test.
+	 */
+	public boolean StringCheckerCatchesLowerCase(IStringChecker checker) {
+		for (String word : "abcdefghijklmnopqrstuvwxyz".split(""))
+			if(checker.check(word))
+				return true;
+		return false;
+	}
+	/**
+	 * This method holds the test cases for testing a StringChecker class method
+	 * against uppercase letters.Returning true means that the method considers the 
+	 * tested string as passing the test as one of its own, so all the tests should
+	 * return false if the method tests strings correctly.
+	 * 
+	 * @param checker the method to test against uppercase letters
+	 * @return True if the method doesn't work and counts the test cases as passing its test.
+	 * False if the method does work and doesn't counts the test cases as passing its test.
+	 */
+	public boolean StringCheckerCatchesUpperCase(IStringChecker checker) {
+		for (String word : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""))
+			if(checker.check(word))
+				return true;
+		return false;
+	}
+	/**
+	 * This method holds the test cases for testing a StringChecker class method
+	 * against all letters.Returning true means that the method considers the 
+	 * tested string as passing the test as one of its own, so all the tests should
+	 * return false if the method tests strings correctly.
+	 * 
+	 * @param checker the method to test against all letters
+	 * @return True if the method doesn't work and counts the test cases as passing its test.
+	 * False if the method does work and doesn't counts the test cases as passing its test.
+	 */
+	public boolean StringCheckerCatchesAllLetters(IStringChecker checker) {
+		for (String word : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""))
+			if(checker.check(word))
+				return true;
+		return checker.check("8932749823D709321703723");
+	}
+	/**
+	 * This method holds the test cases for testing a StringChecker class method
+	 * against numbers.Returning true means that the method considers the 
+	 * tested string as passing the test as one of its own, so all the tests should
+	 * return false if the method tests strings correctly.
+	 * 
+	 * @param checker the method to test against numbers
+	 * @return True if the method doesn't work and counts the test cases as passing its test.
+	 * False if the method does work and doesn't counts the test cases as passing its test.
+	 */
+	public boolean StringCheckerCatchesNumbers(IStringChecker checker) {
+		for (String word : "1234567890".split(""))
+			if(checker.check(word))
+				return true;
+		return checker.check("qwertyuiopasdf6ghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM");
+	}
+
+	/**
+	 * This method holds the test cases for testing a StringChecker class method
+	 * against white space.Returning true means that the method considers the 
+	 * tested string as passing the test as one of its own, so all the tests should
+	 * return false if the method tests strings correctly.
+	 * 
+	 * @param checker the method to test against white space
+	 * @return True if the method doesn't work and counts the test cases as passing its test.
+	 * False if the method does work and doesn't counts the test cases as passing its test.
 	 */
 	public boolean StringCheckerCatchesWhiteSpace(IStringChecker checker) {
 		return checker.check("wgiuh vrevwhe") || checker.check(" ") || checker.check("8932749823 709321703723")
@@ -34,10 +91,13 @@ public class StringCheckerTests {
 
 	/**
 	 * This method holds the test cases for testing a StringChecker class method
-	 * against special chars.
+	 * against special chars. Returning true means that the method considers the 
+	 * tested string as passing the test as one of its own, so all the tests should
+	 * return false if the method tests strings correctly.
 	 * 
-	 * @param checker the method to test againt special chars
-	 * @return if the method returned true for <strong>any</strong> test
+	 * @param checker the method to test against special chars
+	 * @return True if the method doesn't work and counts the test cases as passing its test.
+	 * False if the method does work and doesn't counts the test cases as passing its test.
 	 */
 	public boolean StringCheckerCatchesSpecialChars(IStringChecker checker) {
 		for (String word : "`-=[]\\\\,./;\\'~!@#$%^&*()_+{}|:<>?\\\"".split(""))
@@ -59,8 +119,9 @@ public class StringCheckerTests {
 
 	@Test
 	public void isLowerCaseWordCatchesUpperCase() {
-		for (String word : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""))
-			assertFalse(StringChecker.isLowerCaseWord(word));
+		assertFalse(StringCheckerCatchesUpperCase(StringChecker::isLowerCaseWord));
+		/*for (String word : "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""))
+			assertFalse(StringChecker.isLowerCaseWord(word));*/
 	}
 
 	@Test
@@ -73,6 +134,7 @@ public class StringCheckerTests {
 	public void isLowerCaseWordCatchesSpecialChars() {
 		assertFalse(StringCheckerCatchesSpecialChars(StringChecker::isLowerCaseWord));
 	}
+	//add catches numbers
 
 	
 	
@@ -84,8 +146,9 @@ public class StringCheckerTests {
 
 	@Test
 	public void isUpperCaseWordCatchesLowerCase() {
-		for (String word : "abcdefghijklmnopqrstuvwxyz".split(""))
-			assertFalse(StringChecker.isUpperCaseWord(word));
+		assertFalse(StringCheckerCatchesLowerCase(StringChecker::isUpperCaseWord));
+		/*for (String word : "abcdefghijklmnopqrstuvwxyz".split(""))
+			assertFalse(StringChecker.isUpperCaseWord(word));*/
 	}
 
 	@Test
@@ -95,8 +158,9 @@ public class StringCheckerTests {
 
 	@Test
 	public void isUpperCaseWordCatchesNumbers() {
-		for (String word : "1234567890".split(""))
-			assertFalse(StringChecker.isUpperCaseWord(word));
+		assertFalse(StringCheckerCatchesNumbers(StringChecker::isUpperCaseWord));
+		/*for (String word : "1234567890".split(""))
+			assertFalse(StringChecker.isUpperCaseWord(word));*/
 	}
 
 	@Test
@@ -113,10 +177,11 @@ public class StringCheckerTests {
 	}
 
 	@Test
-	public void isIntegerWordCatchesLetters() {
-		for (String word : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""))
+	public void isIntegerWordCatchesAllLetters() {
+		/*for (String word : "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""))
 			assertFalse(StringChecker.isIntegerWord(word));
-		assertFalse(StringChecker.isIntegerWord("8932749823D709321703723"));
+		assertFalse(StringChecker.isIntegerWord("8932749823D709321703723"));*/
+		assertFalse(StringCheckerCatchesAllLetters(StringChecker::isIntegerWord));
 	}
 
 	@Test
@@ -139,7 +204,7 @@ public class StringCheckerTests {
 	}
 
 	@Test
-	public void isAllLettersCatchesSpecialChar() {
+	public void isAllLettersCatchesSpecialChars() {
 		assertFalse(StringCheckerCatchesSpecialChars(StringChecker::isLetterWord));
 	}
 
@@ -150,9 +215,10 @@ public class StringCheckerTests {
 
 	@Test
 	public void isAllLettersCatchesNumbers() {
-		for (String word : "1234567890".split(""))
+		assertFalse(StringCheckerCatchesNumbers(StringChecker::isLetterWord));
+		/*for (String word : "1234567890".split(""))
 			assertFalse(StringChecker.isLetterWord(word));
-		assertFalse(StringChecker.isLetterWord("qwertyuiopasdf6ghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM"));
+		assertFalse(StringChecker.isLetterWord("qwertyuiopasdf6ghjklmnbvcxzQWERTYUIOPLKJHGFDSAZXCVBNM"));*/
 	}
 	
 	
